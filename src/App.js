@@ -5,7 +5,8 @@ import React, { Component } from 'react';
 import slugify from 'slugify';
 
 import './App.css';
-
+import AllOptions from './AllOptions/AllOptions';
+import Total from './Total/Total';
 // This object will allow us to
 // easily convert numbers into US dollar values
 const USCurrencyFormat = new Intl.NumberFormat('en-US', {
@@ -14,7 +15,9 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
 });
 
 class App extends Component {
-  state = {
+  constructor(props) {
+    super(props);
+    this.state = {
     selected: {
       Processor: {
         name: '17th Generation Intel Core HB (7 Core with donut spare)',
@@ -34,6 +37,7 @@ class App extends Component {
       }
     }
   };
+}
 
   updateFeature = (feature, newValue) => {
     const selected = Object.assign({}, this.state.selected);
@@ -103,11 +107,17 @@ class App extends Component {
         <main>
           <form className="main__form">
             <h2>Customize your laptop</h2>
-            {features}
+            <AllOptions 
+              features={this.props.features} 
+              updateFeature={(feature, newValue)=> this.updateFeature(feature, newValue)}/>
           </form>
           <section className="main__summary">
             <h2>Your cart</h2>
-            {summary}
+            <Total
+              updateFeature={(feature, newValue) =>
+                this.updateFeature(feature, newValue)
+              }
+            />
             <div className="summary__total">
               <div className="summary__total__label">Total</div>
               <div className="summary__total__value">
