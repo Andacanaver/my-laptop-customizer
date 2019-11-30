@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-
+import './Total.css';
 const USCurrencyFormat = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD"
 });
 class Total extends Component {
     render() {
-        const summary = Object.keys(this.props.updateFeature).map((feature, idx) => {
+        const summary = Object.keys(this.props.selected).map((feature, idx) => {
           const featureHash = feature + "-" + idx;
-          const selectedOption = this.props.updateFeature;
+          const selectedOption = this.props.selected[feature];
 
           return (
             <div className="summary__option" key={featureHash}>
@@ -22,6 +22,7 @@ class Total extends Component {
             </div>
           );
         });
+        console.log(summary);
         return summary;
     }
 }

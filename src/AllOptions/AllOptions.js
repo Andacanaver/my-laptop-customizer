@@ -2,7 +2,7 @@ import React, { Component } from "react";
 //import OptionsSelection from '../OptionsSelection/OptionsSelection';
 //import Options from '../Options/Options'
 import slugify from "slugify";
-
+import './AllOptions.css';
 const USCurrencyFormat = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD"
@@ -21,7 +21,7 @@ class AllOptions extends Component {
                     id={itemHash}
                     className="feature__option"
                     name={slugify(feature)}
-                    checked={item.name === this.props.updateFeature}
+                    checked={item.name === this.props.selected[feature].name}
                     onChange={e => this.props.updateFeature(feature, item)}
                   />
                   <label htmlFor={itemHash} className="feature__label">
@@ -42,6 +42,7 @@ class AllOptions extends Component {
           }
         );
         return features
+       
     }
 }
 
