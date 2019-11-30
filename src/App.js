@@ -45,6 +45,7 @@ class App extends Component {
     this.setState({
       selected
     });
+    return selected;
   };
 
   render() {

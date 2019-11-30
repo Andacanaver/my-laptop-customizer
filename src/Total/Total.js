@@ -6,9 +6,9 @@ const USCurrencyFormat = new Intl.NumberFormat("en-US", {
 });
 class Total extends Component {
     render() {
-        const summary = Object.keys(this.props.updateFeature.selected).map((feature, idx) => {
+        const summary = Object.keys(this.props.updateFeature).map((feature, idx) => {
           const featureHash = feature + "-" + idx;
-          const selectedOption = this.props.updateFeature.selected[feature];
+          const selectedOption = this.props.updateFeature;
 
           return (
             <div className="summary__option" key={featureHash}>
