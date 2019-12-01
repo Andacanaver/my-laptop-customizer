@@ -49,12 +49,6 @@ class App extends Component {
   };
 
   render() {
-    
-    const total = Object.keys(this.state.selected).reduce(
-      (acc, curr) => acc + this.state.selected[curr].cost,
-      0
-    );
-
     return (
       <div className="App">
         <header>
@@ -71,21 +65,12 @@ class App extends Component {
               selected={this.state.selected}
             />
           </form>
-          <section className="main__summary">
-            <h2>Your cart</h2>
-            <Total
-              updateFeature={(feature, newValue) =>
-                this.updateFeature(feature, newValue)
-              }
-              selected={this.state.selected}
-            />
-            <div className="summary__total">
-              <div className="summary__total__label">Total</div>
-              <div className="summary__total__value">
-                {USCurrencyFormat.format(total)}
-              </div>
-            </div>
-          </section>
+          <Total
+            updateFeature={(feature, newValue) =>
+              this.updateFeature(feature, newValue)
+            }
+            selected={this.state.selected}
+          />
         </main>
       </div>
     );
